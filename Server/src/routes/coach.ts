@@ -1,28 +1,16 @@
-/// <reference path="../../typings/mssql/mssql.d.ts" />
+/// <reference path="../../typings/mongoose/mongoose.d.ts" />
 
 import {Router} from 'express';
-import * as sql from 'mssql';
-//var sql = require('mssql');
+import * as mongoose from 'mongoose';
 
-var config = {
-    user: 'demo',
-    password: 'password@123',
-    server: 'sol9xwt1o7.database.windows.net', // You can use 'localhost\\instance' to connect to named instance 
-    database: 'devicemoinotringdb-dev',
-    options: {
-        encrypt: true ,// Use this if you're on Windows Azure 
-        database: 'devicemoinotringdb-dev',
-        
-    }
-}
+mongoose.connect('mongodb://Mongosports:q5HAL_ohKNk0DHkwpL49pbbeXySnoERZ9e9IyjmJQHw-@ds054288.mongolab.com:54288/Mongosports');
 
 const coach = Router();
 
-/* GET Location Data from sql azure. */
+
+/* GET coach from momgodb */
 coach.get('/getCoach/:id?', function(req, res, next) { 
-    var id: string = req.query.service;
-  
-      
+    var id: string = req.query.id;     
     
    // string service, int environment, int status, int dcId = 0
     var connection = new sql.Connection(config,function (err){

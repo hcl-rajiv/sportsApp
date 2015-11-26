@@ -13,7 +13,8 @@ var config = {
     }
 };
 var coach = express_1.Router();
-/* GET Location Data from sql azure. */
+
+/* GET coach profile from mongodb*/
 coach.get('/getCoach/:id?', function (req, res, next) {
     var id = req.query.service;
     // string service, int environment, int status, int dcId = 0
